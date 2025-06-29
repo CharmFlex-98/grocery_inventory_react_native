@@ -96,6 +96,12 @@ android {
         versionName "1.0.0"
     }
     signingConfigs {
+        release {
+            storeFile file(project.hasProperty('KEYSTORE_FILE') ? MYAPP_KEYSTORE : System.getenv("KEYSTORE_FILE"))
+            storePassword project.hasProperty('KEYSTORE_PASSWORD') ? MYAPP_STORE_PASSWORD : System.getenv("KEYSTORE_PASSWORD")
+            keyAlias project.hasProperty('KEYSTORE_ALIAS') ? MYAPP_KEY_ALIAS : System.getenv("KEYSTORE_ALIAS")
+            keyPassword project.hasProperty('KEY_PASSWORD') ? MYAPP_KEY_PASSWORD : System.getenv("KEY_PASSWORD")
+        }
         debug {
             storeFile file('debug.keystore')
             storePassword 'android'
@@ -108,14 +114,9 @@ android {
             signingConfig signingConfigs.debug
         }
         release {
-            if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
-                            storeFile file(project.hasProperty('KEYSTORE_FILE') ? MYAPP_KEYSTORE : System.getenv("KEYSTORE_FILE"))
-                            storePassword project.hasProperty('KEYSTORE_PASSWORD') ? MYAPP_STORE_PASSWORD : System.getenv("KEYSTORE_PASSWORD")
-                            keyAlias project.hasProperty('KEYSTORE_ALIAS') ? MYAPP_KEY_ALIAS : System.getenv("KEYSTORE_ALIAS")
-                            keyPassword project.hasProperty('KEY_PASSWORD') ? MYAPP_KEY_PASSWORD : System.getenv("KEY_PASSWORD")
+            signingConfig signingConfigs.release
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.release
             shrinkResources (findProperty('android.enableShrinkResourcesInReleaseBuilds')?.toBoolean() ?: false)
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
