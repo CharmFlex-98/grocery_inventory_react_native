@@ -4,7 +4,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 export const baseApi = createApi({
     reducerPath: "baseApiReducerPath",
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://gimicro.charmflex.com/',
+        baseUrl: 'https://gimicro.charmflex.com/',
         prepareHeaders: async (headers) => {
             const skipAuth = headers.get('skipAuth');
             if (!skipAuth) {
