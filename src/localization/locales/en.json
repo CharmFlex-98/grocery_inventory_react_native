@@ -1,0 +1,9 @@
+{
+  "auth_email_hint": "Email",
+  "auth_username_hint": "Create new username",
+  "auth_password_hint": "Password",
+  "auth_button_login": "Login",
+  "generic_something_went_wrong": "Something went wrong",
+  "auth_register_title": "Register",
+  "auth_button_register": "Register"
+}
