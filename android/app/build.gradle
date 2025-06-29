@@ -109,10 +109,10 @@ android {
         }
         release {
             if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
-                storeFile file(MYAPP_UPLOAD_STORE_FILE)
-                storePassword MYAPP_UPLOAD_STORE_PASSWORD
-                keyAlias MYAPP_UPLOAD_KEY_ALIAS
-                keyPassword MYAPP_UPLOAD_KEY_PASSWORD
+                            storeFile file(project.hasProperty('KEYSTORE_FILE') ? MYAPP_KEYSTORE : System.getenv("KEYSTORE_FILE"))
+                            storePassword project.hasProperty('KEYSTORE_PASSWORD') ? MYAPP_STORE_PASSWORD : System.getenv("KEYSTORE_PASSWORD")
+                            keyAlias project.hasProperty('KEYSTORE_ALIAS') ? MYAPP_KEY_ALIAS : System.getenv("KEYSTORE_ALIAS")
+                            keyPassword project.hasProperty('KEY_PASSWORD') ? MYAPP_KEY_PASSWORD : System.getenv("KEY_PASSWORD")
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
             signingConfig signingConfigs.release
