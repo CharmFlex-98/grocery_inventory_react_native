@@ -97,10 +97,10 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file(project.hasProperty('KEYSTORE_FILE') ? MYAPP_KEYSTORE : System.getenv("KEYSTORE_FILE"))
-            storePassword project.hasProperty('KEYSTORE_PASSWORD') ? MYAPP_STORE_PASSWORD : System.getenv("KEYSTORE_PASSWORD")
-            keyAlias project.hasProperty('KEYSTORE_ALIAS') ? MYAPP_KEY_ALIAS : System.getenv("KEYSTORE_ALIAS")
-            keyPassword project.hasProperty('KEY_PASSWORD') ? MYAPP_KEY_PASSWORD : System.getenv("KEY_PASSWORD")
+            storeFile file(project.hasProperty('KEYSTORE_FILE') ? KEYSTORE_FILE : System.getenv("KEYSTORE_FILE"))
+            storePassword project.hasProperty('KEYSTORE_FILE') ? KEYSTORE_FILE : System.getenv("KEYSTORE_PASSWORD")
+            keyAlias project.hasProperty('KEYSTORE_ALIAS') ? KEYSTORE_ALIAS : System.getenv("KEYSTORE_ALIAS")
+            keyPassword project.hasProperty('KEYSTORE_FILE') ? KEYSTORE_FILE : System.getenv("KEY_PASSWORD")
         }
         debug {
             storeFile file('debug.keystore')
